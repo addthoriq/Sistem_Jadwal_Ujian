@@ -16,11 +16,13 @@ class CreateUsersTable extends Migration
         Schema::create('permissions', function (Blueprint $table){
             $table->char('kode_permission', 3)->primary();
             $table->string('nama_permission', 30);
+            $table->string('slug', 30);
             $table->timestamps();
         });
         Schema::create('roles', function (Blueprint $table) {
             $table->char('kode_role', 3)->primary();
             $table->string('nama_role', 30);
+            $table->string('slug', 30);
             $table->timestamps();
         });
         Schema::create('role_permissions', function (Blueprint $table) {
