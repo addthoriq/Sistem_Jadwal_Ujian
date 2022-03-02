@@ -41,31 +41,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
-
-    public function hasRole($roles) {
-        $this->have_role     = $this->getUserRole();
-        if (is_array($roles)) {
-            foreach ($roles as $role) {
-                if ($this->cekUserRole($role)) {
-                    return true;
-                }
-            }
-        } else {
-            return $this->cekUserRole($roles);
-        }
-        return false;
-    }
-
-    protected function getUserRole() {
-        return $this->role()->getResults();
-    }
-
-    private function cekUserRole($role) {
-        return (strtolower($role) == strtolower($this->have_role->name) ? true : false);
-    }
 }
